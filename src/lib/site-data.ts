@@ -1,24 +1,19 @@
 export const ventures = [
   {
+    name: 'Hononoh',
+    domain: 'hononoh.com',
+    href: 'https://hononoh.com',
+    status: 'Active technology brand',
+    focus: 'Applied AI, software workflows, interfaces, tools, and non-infrastructure digital solutions.',
+    audience: 'For teams and founders turning ideas, processes, or service knowledge into useful software and AI-enabled operations.',
+  },
+  {
     name: 'Dew Point Mechanical',
     domain: 'dewpointmechanical.ca',
+    href: 'https://dewpointmechanical.ca',
     status: 'Active operating brand',
     focus: 'Mechanical service, design-build support, diagnostics, environmental control, project management, and field-ready execution.',
     audience: 'For commercial, industrial, institutional, and high-value mechanical environments where downtime, ambiguity, and poor documentation are expensive.',
-  },
-  {
-    name: 'AOS / Acts Of Service',
-    domain: 'TBD',
-    status: 'Formation track',
-    focus: 'PATEM coverage for healthcare-adjacent businesses: plumbing, architectural, technology, electrical, and mechanical coordination.',
-    audience: 'For clinics, care environments, health-adjacent operators, and facility managers who need one accountable path through multi-trade problems.',
-  },
-  {
-    name: 'Luso Works',
-    domain: 'TBD',
-    status: 'Formation track',
-    focus: 'Construction delivery, general contracting, small works, coordination, and practical project execution.',
-    audience: 'For owners, operators, public buyers, and private clients who need construction work handled with clarity, accountability, and follow-through.',
   },
   {
     name: 'Xynyx',
@@ -28,11 +23,18 @@ export const ventures = [
     audience: 'For organizations that need private, controlled, and scalable AI infrastructure before they can safely operationalize AI.',
   },
   {
-    name: 'Hononoh',
-    domain: 'hononoh.com',
-    status: 'Active technology brand',
-    focus: 'Applied AI, software workflows, interfaces, tools, and non-infrastructure digital solutions.',
-    audience: 'For teams and founders turning ideas, processes, or service knowledge into useful software and AI-enabled operations.',
+    name: 'LUSO Works',
+    domain: 'TBD',
+    status: 'Formation track',
+    focus: 'Construction delivery, general contracting, small works, coordination, and practical project execution.',
+    audience: 'For owners, operators, public buyers, and private clients who need construction work handled with clarity, accountability, and follow-through.',
+  },
+  {
+    name: 'AOS / Acts Of Service',
+    domain: 'TBD',
+    status: 'Formation track',
+    focus: 'PATEM coverage for healthcare-adjacent businesses: plumbing, architectural, technology, electrical, and mechanical coordination.',
+    audience: 'For clinics, care environments, health-adjacent operators, and facility managers who need one accountable path through multi-trade problems.',
   },
 ];
 

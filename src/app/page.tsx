@@ -63,7 +63,18 @@ export default function Home() {
                     {venture.status}
                   </p>
                   <h3 className="text-2xl font-black">{venture.name}</h3>
-                  <p className="mt-1 text-sm font-semibold text-slate/65">{venture.domain}</p>
+                  {venture.href ? (
+                    <a
+                      className="mt-1 inline-block text-sm font-semibold text-slate/65 underline-offset-4 hover:text-copper hover:underline"
+                      href={venture.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {venture.domain}
+                    </a>
+                  ) : (
+                    <p className="mt-1 text-sm font-semibold text-slate/65">{venture.domain}</p>
+                  )}
                 </div>
                 <p className="muted-copy text-sm leading-6">{venture.focus}</p>
                 <p className="mt-5 border-t border-line pt-5 text-sm font-semibold text-ink">

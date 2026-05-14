@@ -27,7 +27,18 @@ export default function VenturesPage() {
                   {venture.status}
                 </p>
                 <h2 className="text-3xl font-black">{venture.name}</h2>
-                <p className="mt-1 text-sm font-semibold text-slate/65">{venture.domain}</p>
+                {venture.href ? (
+                  <a
+                    className="mt-1 inline-block text-sm font-semibold text-slate/65 underline-offset-4 hover:text-copper hover:underline"
+                    href={venture.href}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {venture.domain}
+                  </a>
+                ) : (
+                  <p className="mt-1 text-sm font-semibold text-slate/65">{venture.domain}</p>
+                )}
               </div>
               <p className="muted-copy leading-7">{venture.focus}</p>
               <p className="mt-auto pt-5 font-semibold text-ink">{venture.audience}</p>

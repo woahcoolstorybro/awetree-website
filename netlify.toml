@@ -1,0 +1,36 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20.10.0"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "http://awetree.ca/*"
+  to = "https://awetree.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.awetree.ca/*"
+  to = "https://awetree.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.awetree.ca/*"
+  to = "https://awetree.ca/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

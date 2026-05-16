@@ -1,5 +1,13 @@
 import { SectionHeading } from '@/components/SectionHeading';
-import { capabilities, capabilityStatement, operatingPrinciples, ventures } from '@/lib/site-data';
+import {
+  capabilities,
+  capabilityStatement,
+  companyFacts,
+  operatingPrinciples,
+  ventureMaturity,
+  ventures,
+  ventureWorlds,
+} from '@/lib/site-data';
 
 export default function Home() {
   return (
@@ -18,8 +26,8 @@ export default function Home() {
             </h1>
             <p className="mt-7 max-w-2xl text-xl leading-9 text-white/78">
               Awetree is the operating home for specialized service and technology ventures in
-              mechanical systems, construction delivery, healthcare-adjacent facility support,
-              public-sector work, and applied AI.
+              the Built World and Knowledge Work: physical infrastructure, field delivery,
+              public-sector work, applied AI, and the systems that connect them.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a className="primary-button bg-moss text-ink hover:bg-white" href="#ventures">
@@ -31,19 +39,32 @@ export default function Home() {
             </div>
           </div>
           <div className="surface border-white/15 bg-white/[0.04] p-6 shadow-none">
-            <p className="eyebrow mb-5 text-moss">What Awetree holds</p>
+            <p className="eyebrow mb-5 text-moss">At a glance</p>
             <div className="grid gap-4">
-              {[
-                'The current commercial front door for bids, buyers, and partnership conversations',
-                'A practical home for service, construction, facility, and AI ventures',
-                'A shared system for intake, proposals, documentation, and delivery memory',
-                'A future command layer for focused teams assigned to each operating lane',
-              ].map((item) => (
-                <div className="border border-white/15 bg-white/5 p-5" key={item}>
-                  <p className="text-lg font-semibold text-white">{item}</p>
+              {companyFacts.map((fact) => (
+                <div className="border border-white/15 bg-white/5 p-5" key={fact.label}>
+                  <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-moss">
+                    {fact.label}
+                  </p>
+                  <p className="text-lg font-semibold text-white">{fact.value}</p>
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-8">
+        <div className="container-custom">
+          <div className="grid border-y border-line md:grid-cols-4">
+            {companyFacts.map((fact) => (
+              <div className="border-line py-6 md:border-r md:px-6 md:last:border-r-0" key={fact.label}>
+                <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-copper">
+                  {fact.label}
+                </p>
+                <p className="font-bold leading-6 text-ink">{fact.value}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -52,35 +73,63 @@ export default function Home() {
         <div className="container-custom">
           <SectionHeading
             eyebrow="Portfolio"
-            title="One parent. Clear lanes. Less drag."
-            body="Each venture can speak to its own buyer. Awetree holds the trust, operating memory, proposal logic, and documentation behind the scenes."
+            title="Ventures organized by the worlds they serve."
+            body="Each venture can speak to its own buyer while Awetree keeps the shared trust, operating memory, proposal logic, and documentation behind the scenes."
           />
-          <div className="grid gap-5 lg:grid-cols-5">
-            {ventures.map((venture) => (
-              <article className="surface flex flex-col p-6" key={venture.name}>
-                <div className="mb-5">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-copper">
-                    {venture.status}
-                  </p>
-                  <h3 className="text-2xl font-black">{venture.name}</h3>
-                  {venture.href ? (
-                    <a
-                      className="mt-1 inline-block text-sm font-semibold text-slate/65 underline-offset-4 hover:text-copper hover:underline"
-                      href={venture.href}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      {venture.domain}
-                    </a>
-                  ) : (
-                    <p className="mt-1 text-sm font-semibold text-slate/65">{venture.domain}</p>
-                  )}
-                </div>
-                <p className="muted-copy text-sm leading-6">{venture.focus}</p>
-                <p className="mt-5 border-t border-line pt-5 text-sm font-semibold text-ink">
-                  {venture.audience}
+          <div className="mb-12 grid gap-4 md:grid-cols-4">
+            {ventureMaturity.map((item) => (
+              <div className="border-t-4 border-copper bg-white p-5" key={item.stage}>
+                <p className="mb-3 text-sm font-black uppercase tracking-[0.18em] text-ink">
+                  {item.stage}
                 </p>
-              </article>
+                <p className="muted-copy text-sm leading-6">{item.meaning}</p>
+              </div>
+            ))}
+          </div>
+          <div className="grid gap-8 lg:grid-cols-3">
+            {ventureWorlds.map((world) => (
+              <div className="flex flex-col" key={world.id}>
+                <div className="mb-6 min-h-[12rem] border-t-4 border-copper pt-5">
+                  <p className="eyebrow mb-4">{world.eyebrow}</p>
+                  <h3 className="text-3xl font-black tracking-tight">{world.title}</h3>
+                  <p className="muted-copy mt-4 leading-7">{world.body}</p>
+                </div>
+                <div className="grid flex-1 gap-5">
+                  {ventures
+                    .filter((venture) => venture.world === world.id)
+                    .map((venture) => (
+                      <article className="surface flex flex-col p-6" key={venture.name}>
+                        <div className="mb-5">
+                          <p className="mb-3 inline-flex border border-line bg-cloud px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-copper">
+                            {venture.maturity}
+                          </p>
+                          <h4 className="text-2xl font-black">{venture.name}</h4>
+                          <p className="mt-1 text-sm font-semibold text-slate/65">
+                            {venture.status}
+                          </p>
+                          {venture.href ? (
+                            <a
+                              className="mt-1 inline-block text-sm font-semibold text-slate/65 underline-offset-4 hover:text-copper hover:underline"
+                              href={venture.href}
+                              rel="noreferrer"
+                              target="_blank"
+                            >
+                              {venture.domain}
+                            </a>
+                          ) : (
+                            <p className="mt-1 text-sm font-semibold text-slate/65">
+                              {venture.domain}
+                            </p>
+                          )}
+                        </div>
+                        <p className="muted-copy text-sm leading-6">{venture.focus}</p>
+                        <p className="mt-5 border-t border-line pt-5 text-sm font-semibold text-ink">
+                          {venture.audience}
+                        </p>
+                      </article>
+                    ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
